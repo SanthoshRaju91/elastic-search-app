@@ -19,17 +19,31 @@ export default Component.extend({
   performSearch: task(function*() {
     let search = this.get('search');
     let url = this.get('url');
-    let request = this.get('request');
+    let request = this.getWithDefault('request', {});
     let verb = this.get('selectedVerb');
 
     if (url) {
       try {
-        let response = yield search.loadSearchResults(url, verb, request);
+        let response = '';
+        if (Object.keys(request).length === 0) {
+          response = yield search.loadSearchResults(url, verb);
+        } else {
+          response = yield search.loadSearchResults(url, verb, request);
+        }
         this.set('response', JSON.stringify(response));
       } catch (err) {
         this.set('response', JSON.stringify(err));
       }
     }
 
-  }).restartable()
+  }).restartable(),
+
+  actions: {
+    changeVerb(verb) {
+      this.setProperties({
+        'selectedVerb': verb,
+        'request': {}
+      });
+    }
+  }
 });

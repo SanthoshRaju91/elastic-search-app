@@ -13,7 +13,7 @@
       <br>
       <div class="row">
         <div class="col-lg-2">
-          <select class="form-control" onchange={{action (mut selectedVerb)  value='target.value'}}>
+          <select class="form-control" onchange={{action "changeVerb" value='target.value'}}>
             {{#each httpVerbs as |verb|}}
               <option value={{verb}} selected={{eq verb selectedVerb}}>{{verb}}</option>
             {{/each}}
