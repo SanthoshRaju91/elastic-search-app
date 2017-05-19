@@ -1,7 +1,6 @@
 # elastic-search-app
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is a small application, built to query the elastic search and help the learner to do a lot of hands on practice while learning elastic search.
 
 ## Prerequisites
 
@@ -11,6 +10,17 @@ You will need the following things properly installed on your computer.
 * [Node.js](https://nodejs.org/) (with NPM)
 * [Ember CLI](https://ember-cli.com/)
 * [PhantomJS](http://phantomjs.org/)
+* [Elastic Search](https://www.elastic.co/)
+
+You need to run the elastic search instance while working with this application, and enable the CORS for communicating with elastic search across domain.
+
+## Steps to enabel CORS in elastic search
+
+* Open `config/elasticsearch.yml` file in your favourite editor / terminal from folder where you have installed elastic search.
+* Add the following configuration to the file
+  `http.cors.enabled: true
+   http.cors.allow-origin: "*"`
+* Restart the elastic search instance.
 
 ## Installation
 
