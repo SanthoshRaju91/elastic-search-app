@@ -1,0 +1,52 @@
+@import 'bootstrap';
+
+.app-header {
+  margin: 20px;
+
+  h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 300;
+    font-size: 1.2em;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+.search-container {
+  .request-url {
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  .helper-text {
+    font-size: .8em;
+    font-weight: bolder;
+  }
+
+  .request-body, .response-body {
+    h5 {
+      font-size: .8em;
+      letter-spacing: 1px;
+    }
+  }
+
+  .response-body {
+    .trigger-search-text, .performing-search {
+      position: relative;
+      top: 5em;
+      text-align: center;
+      h4 {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 1em;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .jsoneditor {
+    height: 300px;;
+  }
+}

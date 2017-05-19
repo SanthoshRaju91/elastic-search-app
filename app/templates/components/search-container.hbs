@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="row">
+        <div class="col-lg-2">
+          <h4 class="request-url">Request URL</h4>
+        </div>
+        <div class="col-lg-10">
+            <span class="helper-text">Specify only the endpoint, eg: /megacorp/employee/_search. This will automatically bind to http://localhost:9200/megacorp/employee/_search</span>
+        </div>
+      </div>
+
+      <br>
+      <div class="row">
+        <div class="col-lg-2">
+          <select class="form-control" onchange={{action (mut selectedVerb)  value='target.value'}}>
+            {{#each httpVerbs as |verb|}}
+              <option value={{verb}} selected={{eq verb selectedVerb}}>{{verb}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="col-lg-8">
+          {{input type="text" value=url class="form-control"}}
+        </div>
+        <div class="col-lg-2">
+          <button class="btn btn-primary" onclick={{perform performSearch}} disabled={{performSearch.isRunning}}>Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="request-body">
+        <h5>Request body</h5>
+        {{json-editor json=request mode="code" onChange=(action (mut request))}}
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="response-body">
+        {{#if response }}
+          <h5>Response</h5>
+          {{json-editor json=response mode="text" }}
+        {{else}}
+          {{#if performSearch.isRunning}}
+            <div class="performing-search">
+              <h4>Performing search...</h4>
+            </div>
+          {{else}}
+            <div class="trigger-search-text">
+              <h4>Trigger a search to display results</h4>
+            </div>
+          {{/if}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
